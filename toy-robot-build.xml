@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Run">
+  <PropertyGroup>
+    <OutDir>$(MSBuildStartupDirectory)\Output\</OutDir>
+    <Configuration>Release</Configuration>
+    <TestUtilPath>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe</TestUtilPath>
+    <MsTestExePath>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\MSTest.exe</MsTestExePath>
+    <DoubleQuotes>"</DoubleQuotes>
+    <SolutionProperties>
+      OutDir=$(OutDir);
+      Platform=Any CPU;
+      Configuration=$(Configuration)
+    </SolutionProperties>
+  </PropertyGroup>
+  <ItemGroup>
+    <Solution Include="ToyRobot.sln">
+      <Properties>
+        $(SolutionProperties)
+      </Properties>
+    </Solution>
+  </ItemGroup>
+  <Target Name="Run">
+
+    <CallTarget Targets="BuildSolution" />
+    <CallTarget Targets="RunTests" />
+
+  </Target>
+
+  <Target Name="BuildSolution">
+    <Message Text="BuildSolution called." />
+    <MSBuild Projects="@(Solution)"/>
+  </Target>
+
+  <Target Name="RunTests">
+    <ItemGroup>
+      <TestAssemblies Include="$(OutDir)\*.Tests.dll"/>
+    </ItemGroup>
+
+    <PropertyGroup>
+      <MsTestCommand>"$(TestUtilPath)" @(TestAssemblies)</MsTestCommand>
+    </PropertyGroup>
+
+    <RemoveDir Directories="TestResults"
+               Condition="Exists('TestResults')" />
+    <MakeDir Directories="TestResults" />
+
+    <Exec Command="$(MsTestCommand)"
+          ContinueOnError="false" />
+  </Target>
+
+
+</Project>
