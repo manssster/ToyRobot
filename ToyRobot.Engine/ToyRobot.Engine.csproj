@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Entities\Point.cs" />
+    <Compile Include="Entities\Table.cs" />
     <Compile Include="Enumeration\Command.cs" />
     <Compile Include="Enumeration\Direction.cs" />
     <Compile Include="Entities\Location.cs" />

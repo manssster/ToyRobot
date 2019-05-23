@@ -16,7 +16,7 @@ namespace ToyRobot.Engine.Model
         {
             if (IsPlaced())
             {
-                return String.Format("{0}, {1}, {2}", this.orientation.Location.X, this.orientation.Location.Y, this.orientation.Direction.ToString());
+                return String.Format("{0}, {1}, {2}", this.orientation.Location.Point.X, this.orientation.Location.Point.Y, this.orientation.Direction.ToString());
             }
             else
             {

@@ -42,6 +42,20 @@ namespace ToyRobot.Engine.Tests
         }
 
         [TestMethod()]
+        public void ProcessPlaceCommandOnObstruction()
+        {
+            try
+            {
+                simulator.ProcessInput("PLACE 1,1,NORTH");
+                Assert.IsFalse(simulator.Robot.IsPlaced());
+            }
+            catch (System.Exception)
+            {
+                Assert.Fail();
+            }
+        }
+
+        [TestMethod()]
         public void ProcessPlaceCommandWithSpaces()
         {
             try
