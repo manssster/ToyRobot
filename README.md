@@ -20,5 +20,5 @@ MSBuild
 ## Build Instructions
 
 From within the root folder find toy-robot-build.xml
- execute command 'msbuild toy-robot-build.exe' to perform a release build
+ execute command 'msbuild toy-robot-build.xml' to perform a release build
  Find the build output under <root>/Output folder
